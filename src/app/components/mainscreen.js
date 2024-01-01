@@ -19,7 +19,7 @@ export default function MainScreen() {
 
         if (hour.length > 0) {
             hour.forEach((entry) => {
-                const match = entry.hour.match(/(\d+) hours and (\d+) minutes/);
+                const match = entry.hour.match(/(\d+) and (\d+) minutes/);
                 const hours = parseInt(match[1], 10);
                 const minutes = parseInt(match[2], 10);
                 totalMinutes += hours * 60 + minutes;
@@ -46,7 +46,7 @@ export default function MainScreen() {
         const differenceInMillis = date2 - date1;
         const hours = Math.floor(differenceInMillis / (1000 * 60 * 60));
         const minutes = Math.floor((differenceInMillis % (1000 * 60 * 60)) / (1000 * 60));
-        return `${hours} hours and ${minutes} minutes`
+        return `${hours} and ${minutes} minutes`
     };
 
     const handleSubmit = () => {
@@ -56,7 +56,7 @@ export default function MainScreen() {
         const timeDifference = calculateTimeDifference(convertedTimein, convertedTimeout);
 
         // Check if the time difference is less than 1 minute
-        const match = timeDifference.match(/(\d+) hours and (\d+) minutes/);
+        const match = timeDifference.match(/(\d+) and (\d+) minutes/);
         const hours = parseInt(match[1], 10);
         const minutes = parseInt(match[2], 10);
 
@@ -87,9 +87,9 @@ export default function MainScreen() {
 
 
     return (
-        <div className="h-full w-full min-w-screen min-h-screen flex items-center justify-center gap-5 flex-col py-20">
-            <div className="flex items-center justify-center gap-10">
-                <div className="flex gap-3 items-center justify-center">
+        <div className="h-full w-full min-w-screen min-h-screen flex items-center justify-center gap-3 flex-col px-3 lg:py-20">
+            <div className="flex items-center justify-center gap-2 lg:gap-10">
+                <div className="flex gap-1 lg:gap-3 items-center justify-center">
                     <p>Timein:</p>
                     <input type="number"
                         className="text-black rounded-lg p-1 w-10 text-center"
@@ -118,7 +118,7 @@ export default function MainScreen() {
                     />
                 </div>
 
-                <div className="flex gap-3 items-center justify-center">
+                <div className="flex gap-1 lg:gap-3 items-center justify-center">
                     <p>Timeout:</p>
                     <input type="number"
                         className="text-black rounded-lg p-1 w-10 text-center"
@@ -146,7 +146,7 @@ export default function MainScreen() {
                         }
                     />
                 </div>
-                <div className="flex gap-3 items-center justify-center ">
+                <div className="flex gap-1 lg:gap-3 items-center justify-center">
                     <button onClick={handleSubmit}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="green" className="w-8 h-8">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -156,7 +156,7 @@ export default function MainScreen() {
 
             </div>
 
-            <Card className="h-full w-[30rem]  ">
+            <Card className="h-full w-full lg:w-[30rem]  ">
                 <table className="w-full min-w-max table-auto text-left">
                     <thead >
                         <tr>
